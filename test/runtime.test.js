@@ -13,6 +13,15 @@ test("runtime pins the reviewed PenEcho release", () => {
   assert.equal(installed.license, "AGPL-3.0-only");
 });
 
+test("distribution includes AGPL text and upstream attribution", () => {
+  const license = fs.readFileSync(path.join(root, "LICENSE"), "utf8");
+  const notice = fs.readFileSync(path.join(root, "NOTICE"), "utf8");
+  assert.match(license, /GNU AFFERO GENERAL PUBLIC LICENSE/);
+  assert.match(license, /Version 3, 19 November 2007/);
+  assert.match(notice, /github\.com\/erickong\/penecho/);
+  assert.match(notice, /penecho@0\.4\.2|PenEcho 0\.4\.2/);
+});
+
 test("container base image is digest pinned", () => {
   const dockerfile = fs.readFileSync(path.join(root, "Dockerfile"), "utf8");
   const fromLines = dockerfile.split(/\r?\n/).filter((line) => line.startsWith("FROM "));
