@@ -1,0 +1,17 @@
+{
+  "name": "@zms-labs/penecho-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reproducible ZMS Labs container runtime for PenEcho",
+  "license": "AGPL-3.0-only",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "penecho --config /config/config.env",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "penecho": "0.4.2"
+  }
+}
